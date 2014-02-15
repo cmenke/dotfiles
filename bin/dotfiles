@@ -1,25 +1,32 @@
 #!/usr/bin/env bash
 
-echo 'Dotfiles - "Cowboy" Ben Alman - http://benalman.com/'
-
-if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
-
-Usage: $(basename "$0")
-
-See the README for documentation.
-https://github.com/cowboy/dotfiles
-
-Copyright (c) 2012 "Cowboy" Ben Alman
-Licensed under the MIT license.
-http://benalman.com/about/license/
-HELP
-exit; fi
-
 # Logging stuff.
 function e_header()   { echo -e "\n\033[1m$@\033[0m"; }
 function e_success()  { echo -e " \033[1;32m✔\033[0m  $@"; }
 function e_error()    { echo -e " \033[1;31m✖\033[0m  $@"; }
 function e_arrow()    { echo -e " \033[1;33m➜\033[0m  $@"; }
+
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo "cmenke's .dotfiles Installer/Updater"
+      echo "based on github.com/cowboy/dotfiles (by Ben Alman)"
+      echo ""
+      echo "options:"
+      echo "  -h, --help     show brief help"
+      echo "  --no-init      don't run initialization scripts"
+      exit 0
+      ;;
+    --no-init)
+      SKIP_INIT=true
+      shift
+      ;;
+    *)
+      e_error "$1 is an undefined option. Aborting..."
+      exit 1
+      ;;
+  esac
+done
 
 # Given a list of desired items and installed items, return a list
 # of uninstalled items. Arrays in bash are insane (not in a good way).
@@ -46,21 +53,40 @@ function to_install() {
   echo "${remain[@]}"
 }
 
-# Offer the user a chance to skip something.
+# Offer the user a chance to skip or confirm something.
 function skip() {
-  REPLY=noskip
-  read -t 5 -n 1 -s -p "To skip, press X within 5 seconds. "
-  if [[ "$REPLY" =~ ^[Xx]$ ]]; then
-    echo "Skipping!"
-  else
-    echo "Continuing..."
-    return 1
-  fi
+  echo "Press X to skip (5 Seconds) [x]"
+  read -s -t 5 -n 1 key
+  case $key in
+    x|X)
+      echo "Skipping!"
+      return 1
+      ;;
+    *)
+      echo "Continuing..."
+      ;;
+  esac
+}
+
+function confirm() {
+  echo "Do you want to continue? [y/N]"
+  read -s -n 1 key
+  case $key in
+    y|Y)
+      echo "Continuing..."
+      return 1
+      ;;
+    *)
+      echo "Skipping..."
+      ;;
+  esac
 }
 
 # Initialize.
 function init_do() {
-  source "$2"
+  if [ -f "$2" ]; then
+    source "$2"
+  fi
 }
 
 # Copy files.
@@ -93,8 +119,10 @@ function do_stuff() {
   local files=(~/.dotfiles/$1/*)
   # No files? abort.
   if (( ${#files[@]} == 0 )); then return; fi
+
   # Run _header function only if declared.
   [[ $(declare -f "$1_header") ]] && "$1_header"
+
   # Iterate over files.
   for file in "${files[@]}"; do
     base="$(basename $file)"
@@ -147,12 +175,14 @@ fi
 # Update existing sudo time stamp if set, otherwise do nothing.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+
 # Initialize.
+###########################################
 if [[ ! -d ~/.dotfiles ]]; then
   new_dotfiles_install=1
   # ~/.dotfiles doesn't exist? Clone it!
   e_header "Downloading dotfiles"
-  git clone --recursive git://github.com/cowboy/dotfiles.git ~/.dotfiles
+  git clone --recursive git://github.com/cmenke/dotfiles.git ~/.dotfiles
   cd ~/.dotfiles
 else
   # Make sure we have the latest files.
@@ -163,7 +193,7 @@ else
 fi
 
 # Utilities, helpers.
-source ~/.dotfiles/source/10_misc.sh
+source ~/.dotfiles/conf/helpers.sh
 
 # Add binaries into the path
 PATH=~/.dotfiles/bin:$PATH
@@ -181,7 +211,8 @@ backup_dir="$HOME/.dotfiles/backups/$(date "+%Y_%m_%d-%H_%M_%S")/"
 backup=
 
 # Execute code for each file in these subdirectories.
-do_stuff "init"
+[[ $SKIP_INIT ]] && e_header "Skipping initialization"
+[[ $SKIP_INIT ]] || do_stuff "init"
 do_stuff "copy"
 do_stuff "link"
 

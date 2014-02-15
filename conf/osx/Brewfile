@@ -1,0 +1,42 @@
+doctor
+update
+upgrade
+
+install coreutils
+install findutils
+install zsh
+install sqlite
+install readline
+install rbenv
+install ruby-build
+
+install zsh
+install ssh-copy-id
+install wget --enable-iri
+
+install git
+install git-extras
+
+# Utilities
+install ack
+install htop-osx
+install man2html
+install nmap
+install rename
+install tree
+install z
+
+# Taps
+tap homebrew/dupes
+tap josegonzalez/homebrew-php
+
+# Install more recent versions of some OS X tools
+install vim --override-system-vi
+install homebrew/dupes/grep
+install php55
+
+install go
+install saltstack
+install josegonzalez/php/composer
+
+cleanup
