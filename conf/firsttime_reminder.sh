@@ -1,7 +1,7 @@
 # I'm forgetful. Just look at this repo's commits to see how many times I
 # forgot to setup Git and GitHub.
 
-function wanip() {
+wanip() {
 	curl -qsS ipecho.net/plain ; echo
 }
 

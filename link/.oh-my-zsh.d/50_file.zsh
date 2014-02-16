@@ -22,6 +22,6 @@ alias rcp="rsync -av --progress -h"
 alias rmv="rsync -av --progress -h --remove-source-files"
 
 # Create a new directory and enter it
-function mkcd() {
+mkcd() {
   mkdir -p "$@" && cd "$@"
 }
