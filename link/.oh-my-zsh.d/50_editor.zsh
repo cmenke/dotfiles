@@ -5,7 +5,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   export LESSEDIT='st %f'
   alias q='st'
 else
-  export EDITOR=$(type nano pico vi vim 2>/dev/null | sed 's/ .*$//;q')
+  export EDITOR=$(type vim vi pico nano 2>/dev/null | sed 's/ .*$//;q')
   alias q="$EDITOR -w -z"
 fi
 
