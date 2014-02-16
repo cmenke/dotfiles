@@ -3,7 +3,7 @@
 My OS X / Ubuntu dotfiles (based on [github.com/cowboy/dotfiles](https://github.com/cowboy/dotfiles)).
 
 * OS/DIST-centered init scripts
-* easy to maintain (e.g. reintrating changes)
+* easy to maintain (e.g. to reintegrate changes)
 
 
 ## Installation
