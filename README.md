@@ -1,17 +1,31 @@
 # Dotfiles
 
-My OS X / Ubuntu dotfiles.
+My OS X / Ubuntu dotfiles (based on [github.com/cowboy/dotfiles](https://github.com/cowboy/dotfiles)).
 
-## Why is this a git repo?
+* OS/DIST-centered init scripts
+* easy to maintain (e.g. reintrating changes)
 
-I've been using bash on-and-off for a long time (since Slackware Linux was distributed on 1.44MB floppy disks). In all that time, every time I've set up a new Linux or OS X machine, I've copied over my `.bashrc` file and my `~/bin` folder to each machine manually. And I've never done a very good job of actually maintaining these files. It's been a total mess.
 
-I finally decided that I wanted to be able to execute a single command to "bootstrap" a new system to pull down all of my dotfiles and configs, as well as install all the tools I commonly use. In addition, I wanted to be able to re-execute that command at any time to synchronize anything that might have changed. Finally, I wanted to make it easy to re-integrate changes back in, so that other machines could be updated.
+## Installation
 
-That command is [dotfiles][dotfiles], and this is my "dotfiles" Git repo.
+Simply clone/download the repository and run [bin/dotfiles][dotfiles].
 
-[dotfiles]: bin/dotfiles
-[bin]: https://github.com/cowboy/dotfiles/tree/master/bin
+```sh
+git clone https://github.com/cmenke/dotfiles.git ~/.dotfiles
+~/.dotfiles/bin/dotfiles [--no-init] [--cask]
+```
+
+### OS X Notes
+
+* You need to have installed [XCode](https://developer.apple.com/downloads/index.action?=xcode) or, at the very minimum, the [XCode Command Line Tools](https://developer.apple.com/downloads/index.action?=command%20line%20tools), which are available as a _much smaller_ download thank XCode.
+* You need to be an administrator (for `sudo`), unless you skip the init step.
+
+### Ubuntu Notes
+
+* You need to be an administrator (for `sudo`) to run the init step*
+
+*In my case, debian/ubuntu systems are usually provisioned via [saltstack](https://github.com/saltstack/salt) or [puppet](https://github.com/puppetlabs/puppet), thus there's minimal to no need to perform the init step (`--no-init`)
+
 
 ## What, exactly, does the "dotfiles" command do?
 
@@ -19,90 +33,51 @@ It's really not very complicated. When [dotfiles][dotfiles] is run, it does a fe
 
 1. Git is installed if necessary, via APT or Homebrew (which is installed if necessary).
 2. This repo is cloned into the `~/.dotfiles` directory (or updated if it already exists).
-2. Files in `init` are executed (in alphanumeric order, hence the "50_" names).
-3. Files in `copy` are copied into `~/`.
-4. Files in `link` are linked into `~/`.
+3. Files in `init` are executed* (in alphanumeric order, hence the "50_" names)
+4. Files in `copy` are copied into `~/`.
+5. Files in `link` are linked into `~/`.
+
+*unless an `--no-init` flag is passed.
 
 Note:
 
 * The `backups` folder only gets created when necessary. Any files in `~/` that would have been overwritten by `copy` or `link` get backed up there.
 * Files in `bin` are executable shell scripts (Eg. [~/.dotfiles/bin][bin] is added into the path).
-* Files in `source` get sourced whenever a new shell is opened (in alphanumeric order, hence the "50_" names).
 * Files in `conf` just sit there. If a config file doesn't _need_ to go in `~/`, put it in there.
 * Files in `caches` are cached files, only used by some scripts. This folder will only be created if necessary.
 
-## Installation
-### OS X Notes
-
-* You need to be an administrator (for `sudo`).
-* You need to have installed [XCode](https://developer.apple.com/downloads/index.action?=xcode) or, at the very minimum, the [XCode Command Line Tools](https://developer.apple.com/downloads/index.action?=command%20line%20tools), which are available as a _much smaller_ download thank XCode.
-
-### Ubuntu Notes
-
-* You need to be an administrator (for `sudo`).
-* You might want to set up your ubuntu server [like I do it](/cowboy/dotfiles/wiki/ubuntu-setup), but then again, you might not.
-* Either way, you should at least update/upgrade APT with `sudo apt-get -qq update && sudo apt-get -qq dist-upgrade` first.
-
-### Actual Installation
-
-```sh
-bash -c "$(curl -fsSL https://bit.ly/cowboy-dotfiles)" && source ~/.bashrc
-```
-
-If, for some reason, [bit.ly](https://bit.ly/) is down, you can use the canonical URL.
-
-```sh
-bash -c "$(curl -fsSL https://raw.github.com/cowboy/dotfiles/master/bin/dotfiles)" && source ~/.bashrc
-```
+[dotfiles]: bin/dotfiles
+[bin]: bin
 
 ## The "init" step
-A whole bunch of things will be installed, but _only_ if they aren't already.
+A whole bunch of things will be installed, but _only_ if they aren't already. You may skip this step by using the `--no-init` flag -- consequently, no `sudo` rights will be required.
+
+OS / Distribution dependant Installation Scripts are localted in `init/$OS` (see [10_os.sh](init/10_os.sh))
 
 ### OS X
-* Homebrew recipes
-  * git
-  * tree
-  * sl
-  * lesspipe
-  * id3tool
-  * nmap
-  * git-extras
-  * htop-osx
-  * man2html
-  * hub
-  * cowsay
-  * ssh-copy-id
-  * apple-gcc42 (via [homebrew-dupes](https://github.com/Homebrew/homebrew-dupes/blob/master/apple-gcc42.rb))
+
+* A bunch of [system defaults][osx_system] and [user tweaks][osx_user] are run
+* Homebrew recipes (see [Brewfile][brewfile]) are installed
+* Regular OS X Applications are installed via [brew cask][osx_cask] if the `--cask` flag is set
+
+[osx_system]: init/osx/10_system_defaults.sh
+[osx_user]: init/osx/20_user_defaults.sh
+[osx_cask]: init/osx/45_packages-cask.sh
+[brewfile]: conf/osx/Brewfile
 
 ### Ubuntu
-* APT packages
+* The following APT Packages will be installed
   * build-essential
   * libssl-dev
-  * git-core
+  * rbenv
   * tree
-  * sl
-  * id3tool
-  * cowsay
   * nmap
   * telnet
   * htop
+  * ngrep
 
 ### Both
-* Nave
-  * node (latest stable)
-    * npm
-    * grunt-cli
-    * linken
-    * bower
-    * node-inspector
-    * yo
-* rbenv
-  * ruby 2.0.0-p247
-* gems
-  * bundler
-  * awesome_print
-  * pry
-  * lolcat
+* [oh-my-zsh](#oh-my-zsh) is installed
 
 ## The ~/ "copy" step
 Any file in the `copy` subdirectory will be copied into `~/`. Any file that _needs_ to be modified with personal information (like [.gitconfig](copy/.gitconfig) which contains an email address and private key) should be _copied_ into `~/`. Because the file you'll be editing is no longer in `~/.dotfiles`, it's less likely to be accidentally committed into your public dotfiles repo.
@@ -110,40 +85,10 @@ Any file in the `copy` subdirectory will be copied into `~/`. Any file that _nee
 ## The ~/ "link" step
 Any file in the `link` subdirectory gets symbolically linked with `ln -s` into `~/`. Edit these, and you change the file in the repo. Don't link files containing sensitive data, or you might accidentally commit that data!
 
-## Aliases and Functions
-To keep things easy, the `~/.bashrc` and `~/.bash_profile` files are extremely simple, and should never need to be modified. Instead, add your aliases, functions, settings, etc into one of the files in the `source` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](https://github.com/cowboy/dotfiles/tree/master/source). I even have a [fancy prompt](source/50_prompt.sh) that shows the current directory, time and current git/svn repo status.
-
-## Scripts
-In addition to the aforementioned [dotfiles][dotfiles] script, there are a few other [bash scripts][bin]. This includes [ack](https://github.com/petdance/ack), which is a [git submodule](https://github.com/cowboy/dotfiles/tree/master/libs).
-
-* [dotfiles][dotfiles] - (re)initialize dotfiles. It might ask for your password (for `sudo`).
-* [src](link/.bashrc#L6-15) - (re)source all files in `source` directory
-* Look through the [bin][bin] subdirectory for a few more.
-
-## Prompt
-I think [my bash prompt](source/50_prompt.sh) is awesome. It shows git and svn repo status, a timestamp, error exit codes, and even changes color depending on how you've logged in.
-
-Git repos display as **[branch:flags]** where flags are:
-
-**?** untracked files  
-**!** changed (but unstaged) files  
-**+** staged files
-
-SVN repos display as **[rev1:rev2]** where rev1 and rev2 are:
-
-**rev1** last changed revision  
-**rev2** revision
-
-Check it out:
-
-![My awesome bash prompt](http://farm8.staticflickr.com/7142/6754488927_563dd73553_b.jpg)
-
-## Inspiration
-<https://github.com/gf3/dotfiles>  
-<https://github.com/mathiasbynens/dotfiles>  
-(and 15+ years of accumulated crap)
+<a name="oh-my-zsh"></a>
+## oh-my-zsh: Aliases, Functions and Plugins
+By default, [~/.oh-my-zsh.d](link/.oh-my-zsh.d) is set as `ZSH_CUSTOM` in [~/.zshrc](link/.zshrc).
 
 ## License
-Copyright (c) 2013 "Cowboy" Ben Alman  
-Licensed under the MIT license.  
-<http://benalman.com/about/license/>
+Copyright (c) 2014 Ben Alman, Christoph Menke<br>
+Licensed under the [MIT license](http://opensource.org/licenses/MIT/)
