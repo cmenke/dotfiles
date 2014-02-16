@@ -21,6 +21,10 @@ while test $# -gt 0; do
       SKIP_INIT=true
       shift
       ;;
+    --cask)
+      RUN_CASK=true
+      shift
+      ;;
     *)
       e_error "$1 is an undefined option. Aborting..."
       exit 1
@@ -185,6 +189,9 @@ if [[ ! -d ~/.dotfiles ]]; then
   git clone --recursive git://github.com/cmenke/dotfiles.git ~/.dotfiles
   cd ~/.dotfiles
 else
+  if [[ ! -d ~/.dotfiles/caches ]]; then
+    new_dotfiles_install=1
+  fi
   # Make sure we have the latest files.
   e_header "Updating dotfiles"
   cd ~/.dotfiles

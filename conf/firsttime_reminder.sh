@@ -1,9 +1,11 @@
-# This file is sourced at the end of a first-time dotfiles install.
-shopt -s expand_aliases
-source ~/.zshrc
-
 # I'm forgetful. Just look at this repo's commits to see how many times I
 # forgot to setup Git and GitHub.
+
+function wanip() {
+	curl -qsS ipecho.net/plain ; echo
+}
+
+MY_IP=wanip
 
 cat <<EOF
 1) Setup Git
@@ -12,6 +14,6 @@ cat <<EOF
 2) copy keys to .ssh
 3) set .aws/config file
 
-If this is a remote server, run [-i KEYFILE]:
-ssh-copy-id $USER@$(wanip) && ssh $USER@$(wanip)
+If this is a remote server, run [-i ~/.ssh/KEYFILE]:
+ssh-copy-id $USER@$($MY_IP) && ssh $USER@$($MY_IP)
 EOF

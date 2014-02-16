@@ -1,5 +1,5 @@
-# Don't run this unless it's a fresh system
-[ "$IS_FRESH" ] && return 1
+# Run only if explicitly specified
+[[ $RUN_CASK ]] || return 1
 
 # Install native apps
 brew tap phinze/homebrew-cask
