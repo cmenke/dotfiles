@@ -41,7 +41,7 @@ set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
 " Highlight searches
 set hlsearch
@@ -50,7 +50,7 @@ set ignorecase
 " Highlight dynamically as pattern is typed
 set incsearch
 " Always show status line
-set laststatus=2
+"set laststatus=2
 " Enable mouse in all modes
 set mouse=a
 " Disable error bells
@@ -67,13 +67,11 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
-" Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+" Vim Colors / Theme
+set background=dark
+colorscheme solarized
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
