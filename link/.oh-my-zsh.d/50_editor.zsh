@@ -6,7 +6,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   alias q='st'
 else
   export EDITOR=$(type vim vi pico nano 2>/dev/null | sed 's/ .*$//;q')
-  alias q="$EDITOR -w -z"
+  alias q="$EDITOR"
 fi
 
 export VISUAL="$EDITOR"
