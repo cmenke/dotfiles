@@ -20,6 +20,7 @@ install git-extras
 # Utilities
 install ack
 install htop-osx
+install jq
 install man2html
 install nmap
 install rename
