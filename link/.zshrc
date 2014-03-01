@@ -1,16 +1,20 @@
 # ZSH Settings
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh.d
-ZSH_THEME="risto"
-DISABLE_AUTO_UPDATE="true"
+ZSH_THEME=risto
+DISABLE_AUTO_UPDATE=true
 
-plugins=('git' 'composer' 'vagrant' 'golang' 'artisan' 'aws')
+plugins=(git vagrant aws golang npm composer laravel)
 
 # OS X specific plugins
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-  plugins+=('brew' 'osx-backup')
+  plugins+=(brew osx-backup rbenv)
 fi
 
+source $HOME/.zshrc.local
 source $ZSH/oh-my-zsh.sh
 
-eval "$(rbenv init -)"
+# Init rbenv (if available)
+if (type rbenv >/dev/null 2>&1); then
+  eval "$(rbenv init -)"
+fi
