@@ -1,8 +1,9 @@
 AWS_HOME="${HOME}/.aws"
+AWS_CONFIG_FILE="${AWS_HOME}/config"
 
-if [ -e $AWS_HOME ]; then
+if [ -e $AWS_CONFIG_FILE ]; then
   export AWS_HOME
-  export AWS_CONFIG_FILE="${AWS_HOME}/config"
+  export AWS_CONFIG_FILE
 
   function agp {
     echo $AWS_DEFAULT_PROFILE
