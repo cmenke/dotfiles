@@ -9,7 +9,9 @@ alias dir='ls -hl'
 if [[ "$OSTYPE" =~ ^darwin ]]; then
 	alias dl="cd $HOME/Downloads"
 	alias dt="cd $HOME/Desktop"
-	alias p="cd $HOME/Projects"
+
+  p(){cd ~/Projects/$1;}
+  compctl -W ~/Projects -/ p
 fi
 
 # Use human-readable filesizes
