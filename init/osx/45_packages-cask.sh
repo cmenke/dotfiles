@@ -15,7 +15,6 @@ function installcask() {
 }
 
 installcask google-chrome-beta
-installcask google-chrome-canary
 installcask google-drive
 installcask skype
 installcask vlc
@@ -25,13 +24,14 @@ installcask f-lux
 installcask the-unarchiver
 installcask caffeine
 installcask karabiner
+installcask quicklook-csv
+installcask quicklook-json
 
 installcask iterm2
 installcask phpstorm
 installcask sublime-text3
 installcask sequel-pro
 installcask tower
-installcask github
 installcask transmit
 installcask dash
 installcask kaleidoscope
