@@ -23,6 +23,7 @@ installcask transmission
 installcask f-lux
 installcask the-unarchiver
 installcask caffeine
+installcask imageoptim
 installcask karabiner
 installcask quicklook-csv
 installcask quicklook-json
