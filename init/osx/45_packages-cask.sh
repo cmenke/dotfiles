@@ -24,7 +24,7 @@ installcask transmission
 installcask f-lux
 installcask the-unarchiver
 installcask caffeine
-installcask keyremap4macbook
+installcask karabiner
 
 installcask iterm2
 installcask phpstorm

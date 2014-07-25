@@ -1,4 +1,4 @@
-cli=/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli
+cli=/Applications/Karabiner.app/Contents/Library/bin/karabiner
 [[ -f $cli ]] || return 1
 
 $cli set remap.german_optionbeta2backslash 1
