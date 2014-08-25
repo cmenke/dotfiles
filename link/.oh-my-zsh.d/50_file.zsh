@@ -10,8 +10,8 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 	alias dl="cd $HOME/Downloads"
 	alias dt="cd $HOME/Desktop"
 
-  p(){cd ~/Projects/$1;}
-  compctl -W ~/Projects -/ p
+  w(){cd ~/workspace/$1;}
+  compctl -W ~/workspace -/ w
 fi
 
 # Use human-readable filesizes
