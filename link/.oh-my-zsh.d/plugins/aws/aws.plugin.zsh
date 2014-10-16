@@ -11,7 +11,7 @@ if [ -e $AWS_CONFIG_FILE ]; then
 
   function asp {
     export AWS_DEFAULT_PROFILE=$1
-    export RPROMPT="%{$fg[magenta]%}aws:$AWS_DEFAULT_PROFILE%{$reset_color%}"
+    export RPROMPT="%{$reset_color%}aws:%{$fg[magenta]%}$AWS_DEFAULT_PROFILE%{$reset_color%} $RPROMPT"
   }
 
   function aws_profiles {
