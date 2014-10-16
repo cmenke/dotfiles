@@ -48,5 +48,6 @@ install go
 install saltstack
 install ansible
 install packer
+install terraform
 
 cleanup
