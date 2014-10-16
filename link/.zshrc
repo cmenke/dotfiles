@@ -4,11 +4,11 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh.d
 ZSH_THEME=cmenke
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git vagrant aws golang npm composer laravel)
+plugins=(git aws golang npm composer laravel)
 
 # OS X specific plugins
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-  plugins+=(brew osx-backup rbenv)
+  plugins+=(brew osx-backup rbenv vagrant)
 fi
 
 source $HOME/.zshrc.local
