@@ -9,6 +9,8 @@ _artisan () {
 }
 
 compdef _artisan artisan
+compdef _artisan artisand
 
 #!zsh
 alias artisan='php artisan'
+alias artisand='php -dxdebug.remote_connect_back=0 -dxdebug.remote_autostart -dxdebug.remote_host="33.33.33.1" artisan'
