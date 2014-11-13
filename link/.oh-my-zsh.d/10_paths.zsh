@@ -3,7 +3,7 @@ source ~/.dotfiles/conf/helpers.sh
 PATH=$HOME/.dotfiles/bin:$PATH
 
 # GOLANG
-export GOPATH=$HOME/Projects/golang
-PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/workspace/golang
+PATH=$GOPATH/bin:$PATH
 
 export PATH
