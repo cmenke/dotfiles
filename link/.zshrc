@@ -11,7 +11,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   plugins+=(brew osx-backup rbenv vagrant)
 fi
 
-source $HOME/.zshrc.local
+[[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 source $ZSH/oh-my-zsh.sh
 
 # Init rbenv (if available)
