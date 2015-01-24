@@ -38,17 +38,6 @@ function geoip() {
       echo "address is given, your own public IP will be used instead."
       ;;
     * )
-      curl -s "http://www.geoiptool.com/en/?IP=${ipaddress}" -H "User-Agent: " | \
-        awk -F '(</?[^>]+>)+' \
-          "/Host Name/,/Latitude/ {
-            if (/:/) {
-              printf(\"%${padlen}s \", \$2);
-              getline;
-              gsub(/^[ \t]+/, \"\", \$2);
-              gsub(/[ \t]+$/, \"\", \$2);
-              print \$2
-            }
-          }"
-      ;;
+      curl -s http://freegeoip.net/json/${ipaddress} | jq '.'
   esac
 }
