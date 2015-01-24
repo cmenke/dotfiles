@@ -234,6 +234,9 @@ $mech{PLAIN} = sub {
 };
 
 eval {
+	# Blowfish is considered deprecated and no longer supported
+	# It's superceded by ECDSA-NIST256P-CHALLENGE, which requires
+	# additional binary support from https://github.com/atheme/ecdsatool
 	require Crypt::OpenSSL::Bignum;
 	my $compute_secret;
 	eval {
