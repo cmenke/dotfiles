@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
@@ -50,7 +52,7 @@ set ignorecase
 " Highlight dynamically as pattern is typed
 set incsearch
 " Always show status line
-"set laststatus=2
+set laststatus=2
 " Enable mouse in all modes
 set mouse=a
 " Disable error bells
@@ -71,7 +73,7 @@ set showcmd
 set scrolloff=3
 " Vim Colors / Theme
 set background=dark
-colorscheme solarized
+colorscheme hybrid_reverse
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
