@@ -15,7 +15,10 @@ chatnets = { freenode = { type = "IRC"; nick = "laax"; }; };
 
 channels = (
   { name = "#laravel"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#angularjs"; chatnet = "freenode"; autojoin = "Yes"; }
+  { name = "#angularjs"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#salt"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#coreos"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#docker"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -166,7 +169,27 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#vuejs";
+        name = "#salt";
+        tag = "freenode";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#coreos";
+        tag = "freenode";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#docker";
         tag = "freenode";
       }
     );

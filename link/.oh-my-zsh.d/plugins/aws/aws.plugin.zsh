@@ -19,5 +19,6 @@ if [ -e $AWS_CONFIG_FILE ]; then
   }
 
   compctl -K aws_profiles asp
-  source `which aws_zsh_completer.sh`
+  # source `which aws_zsh_completer.sh`
+  source /usr/local/share/zsh/site-functions/_aws
 fi
