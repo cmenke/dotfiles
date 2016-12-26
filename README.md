@@ -8,11 +8,11 @@ My OS X / Ubuntu dotfiles (based on [github.com/cowboy/dotfiles](https://github.
 
 ## Installation
 
-Simply clone/download the repository and run [bin/dotfiles][dotfiles].
+Simply clone/download the repository and run [setup][setup].
 
 ```sh
 git clone https://github.com/cmenke/dotfiles.git ~/.dotfiles
-~/.dotfiles/bin/dotfiles [--no-init] [--cask]
+~/.dotfiles/setup [--no-init] [--cask]
 ```
 
 ### OS X Notes
@@ -27,9 +27,9 @@ git clone https://github.com/cmenke/dotfiles.git ~/.dotfiles
 *In my case, debian/ubuntu systems are usually provisioned via [saltstack](https://github.com/saltstack/salt) or [puppet](https://github.com/puppetlabs/puppet), thus there's minimal to no need to perform the init step (`--no-init`)
 
 
-## What, exactly, does the "dotfiles" command do?
+## What happens during setup
 
-It's really not very complicated. When [dotfiles][dotfiles] is run, it does a few things:
+It's really not very complicated. When [setup][setup] is run, it does a few things:
 
 1. Git is installed if necessary, via APT or Homebrew (which is installed if necessary).
 2. This repo is cloned into the `~/.dotfiles` directory (or updated if it already exists).

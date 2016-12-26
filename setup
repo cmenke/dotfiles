@@ -163,13 +163,6 @@ if [[ ! "$(type -P gcc)" && "$OSTYPE" =~ ^darwin ]]; then
   exit 1
 fi
 
-# If Git is not installed, install it (Ubuntu only, since Git comes standard
-# with recent XCode or CLT)
-if [[ ! "$(type -P git)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
-  e_header "Installing Git"
-  sudo apt-get -qq install git-core
-fi
-
 # If Git isn't installed by now, something exploded. We gots to quit!
 if [[ ! "$(type -P git)" ]]; then
   e_error "Git should be installed. It isn't. Aborting."

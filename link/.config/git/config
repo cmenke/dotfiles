@@ -2,8 +2,8 @@
   name = Christoph Menke
   email = EMAIL
 [core]
-  excludesfile = ~/.gitignore
-  attributesfile = ~/.gitattributes
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
   autocrlf = input
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
   trustctime = false

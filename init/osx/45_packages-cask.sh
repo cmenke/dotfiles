@@ -14,31 +14,45 @@ function installcask() {
     fi
 }
 
-installcask google-chrome-beta
-installcask google-drive
-installcask skype
-installcask vlc
-installcask transmission
-
-installcask f-lux
-installcask the-unarchiver
-installcask caffeine
-installcask imageoptim
-installcask karabiner
+# Quicklook Plugins - see https://github.com/sindresorhus/quick-look-plugins
+installcask betterzipql
+installcask qlcolorcode
+installcask qlprettypatch
 installcask quicklook-csv
 installcask quicklook-json
 
+# Misc
+installcask adobe-photoshop-cc
+installcask adobe-photoshop-lightroom
+installcask google-chrome-beta
+installcask google-drive
+installcask little-snitch
+installcask skype
+installcask spillo
+installcask teamviewer
+installcask transmission
+installcask vlc
+installcask vox
+installcask vox-preferences-pane
+
+# Development
+installcask dash
 installcask iterm2
+installcask kaleidoscope
+installcask paw
 installcask phpstorm
-installcask sublime-text3
 installcask sequel-pro
+installcask sublime-text
 installcask tower
 installcask transmit
-installcask dash
-installcask kaleidoscope
-
-installcask virtualbox
 installcask vagrant
+installcask veertu-desktop
+installcask visual-studio-code
 
-installcask android-studio
-installcask teamviewer
+# Utilities
+installcask alfred
+installcask f-lux
+installcask hammerspoon
+installcask imageoptim
+installcask keepingyouawake
+installcask the-unarchiver

@@ -5,13 +5,11 @@ upgrade
 install coreutils
 install findutils
 install libarchive
-install sqlite
+install spatialite-tools
 install readline
-install rbenv
-install ruby-build
 install rsync
 
-install zsh
+install fish
 install ssh-copy-id
 install wget --enable-iri
 
@@ -22,28 +20,18 @@ install git-extras
 install ack
 install htop-osx
 install httpie
-install irssi
 install jq
-install man2html
-install nmap
 install rename
 install tree
-install z
 
 # Taps
 tap homebrew/dupes
-tap josegonzalez/homebrew-php
 
 # Install more recent versions of some OS X tools
-install vim --override-system-vi
+install vim --with-override-system-vi
 install homebrew/dupes/grep
-install php55
 
 # Dev
-install php55-mcrypt
-install phpmd
-install josegonzalez/php/composer
-
 install go
 install saltstack
 install ansible

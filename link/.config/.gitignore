@@ -1,0 +1,7 @@
+configstore
+gcloud
+
+fish/fish_history
+fish/fish_read_history
+fish/fishd.*
+fish/generated_completions

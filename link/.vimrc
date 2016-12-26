@@ -41,7 +41,7 @@ syntax on
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces
-set tabstop=2
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
