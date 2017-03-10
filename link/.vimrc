@@ -94,3 +94,6 @@ if has("autocmd")
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
+
+" Key Bindings
+let g:multi_cursor_next_key='<C-d>'
