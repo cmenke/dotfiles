@@ -1,5 +1,7 @@
 configstore
 gcloud
+git/gitk
+yarn
 
 fish/fish_history
 fish/fish_read_history

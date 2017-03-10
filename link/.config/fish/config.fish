@@ -3,9 +3,9 @@ set -gx WORKSPACE $HOME/workspace
 set -gx GDRIVE $HOME/Drive
 set -gx GOPATH $HOME/golang
 set -gx GOROOT (go env GOROOT)
+set -gx VAGRANT_HOME $HOME/VMs/vagrant
 
-set PATH $HOME/.dotfiles/bin $GOPATH/bin $PATH
-
+set PATH $HOME/.dotfiles/bin $GOPATH/bin $PATH $HOME/.config/yarn/global/node_modules/.bin
 
 ## -- 50_editor
 set -Ux EDITOR "vim"
@@ -14,7 +14,6 @@ alias q=vim
 alias q.='q .'
 
 ## -- 50_file
-alias -="cd -"
 alias dir='ls -hl'
 alias du="du -h"
 alias df="df -h"
@@ -47,9 +46,9 @@ set -Ux EDITOR 'st -w'
 alias q=st
 
 ## -- local
-set -gx VAGRANT_HOME "/Volumes/Data/VMs/vagrant"
 alias irssi="screen -wipe; screen -A -U -x -R -S irssi irssi"
 alias tf=terraform
 
+alias j="jrnl"
 alias todo="touch $GDRIVE/notes/txt/(date +%Y/W%V).todo; q $GDRIVE/notes/txt/(date +%Y/W%V).todo"
 
