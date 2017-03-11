@@ -1,3 +1,6 @@
 [submodule "link/.vim/bundle/lightline.vim"]
 	path = link/.vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "link/.vim/bundle/multiple-cursors.vim"]
+	path = link/.vim/bundle/multiple-cursors.vim
+	url = https://github.com/terryma/vim-multiple-cursors.git

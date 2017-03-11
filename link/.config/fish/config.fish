@@ -1,16 +1,10 @@
 ## -- 10_paths
-set -gx WORKSPACE $HOME/workspace
-set -gx GDRIVE $HOME/Drive
-set -gx GOPATH $HOME/golang
-set -gx GOROOT (go env GOROOT)
-set -gx VAGRANT_HOME $HOME/VMs/vagrant
+set PATH $HOME/.dotfiles/bin $PATH
 
-set PATH $HOME/.dotfiles/bin $GOPATH/bin $PATH $HOME/.config/yarn/global/node_modules/.bin
-
-## -- 50_editor
+# -- 50_editor
 set -Ux EDITOR "vim"
 set -Ux VISUAL "$EDITOR"
-alias q=vim
+alias q=$EDITOR
 alias q.='q .'
 
 ## -- 50_file
@@ -40,15 +34,7 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 # View HTTP traffic
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-## -- 50_osx
-set -gx HOMEBREW_CASK_OPTS "--appdir=/Applications"
-set -Ux EDITOR 'st -w'
-alias q=st
-
-## -- local
-alias irssi="screen -wipe; screen -A -U -x -R -S irssi irssi"
-alias tf=terraform
-
-alias j="jrnl"
-alias todo="touch $GDRIVE/notes/txt/(date +%Y/W%V).todo; q $GDRIVE/notes/txt/(date +%Y/W%V).todo"
+for file in $HOME/.config/fish/conf.local.d/*.fish
+  source $file
+end
 
