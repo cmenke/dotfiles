@@ -1,6 +1,7 @@
 configstore
 gcloud
 git/gitk
+htop
 yarn
 
 fish/fish_history
