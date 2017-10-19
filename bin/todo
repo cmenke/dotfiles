@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
+Open .TODO file
+
+Usage: $(basename "$0") [n|y]
+
+Arguments:
+  n|next  opens the next week
+HELP
+exit; fi
+
+
+TODO_PATH="${GDRIVE}/notes/txt"
+
+WEEK_THIS="$(date +%Y/W%V).todo"
+WEEK_LAST="$(date -v-7d +%Y/W%V).todo"
+WEEK_NEXT="$(date -v+7d +%Y/W%V).todo"
+
+OPEN_FOLDERS=("${TODO_PATH}")
+
+if [[ "$1" == "n" || "$1" == "next" ]]; then
+  OPEN_FOLDERS+=("${TODO_PATH}/${WEEK_NEXT}")
+else
+  OPEN_FOLDERS+=("${TODO_PATH}/${WEEK_THIS}")
+fi
+
+# Open editor without waiting for it to be closed
+${EDITOR/-w/} "${OPEN_FOLDERS[@]}";
