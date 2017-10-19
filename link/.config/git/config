@@ -18,7 +18,7 @@
 
 [alias]
   # View abbreviated SHA, description, and history graph of the latest 20 commits
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  l = log -n 20 --graph --abbrev-commit --pretty=format:'%C(yellow)%h %C(blue)%ad %C(green)%an%C(red)%d %Creset%s'
   # View the current working tree status using the short format
   s = status -s
   # Show the diff between the latest commit and the current state

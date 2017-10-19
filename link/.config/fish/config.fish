@@ -2,8 +2,8 @@
 set PATH $HOME/.dotfiles/bin $PATH
 
 # -- 50_editor
-set -Ux EDITOR "vim"
-set -Ux VISUAL "$EDITOR"
+set -gx EDITOR "vim"
+set -gx VISUAL "$EDITOR"
 alias q=$EDITOR
 alias q.='q .'
 
@@ -12,6 +12,7 @@ alias dir='ls -hl'
 alias du="du -h"
 alias df="df -h"
 alias fs="stat -f '%z bytes'"
+alias inkognito="set -l FISH_HISTFILE \"\";echo \"-- incognito session started\""
 
 # Copy / Move Files via Rsync
 abbr -a rcp 'rsync -av --progress -h'
