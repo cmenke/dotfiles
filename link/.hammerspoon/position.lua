@@ -1,6 +1,6 @@
-hs.window.animationDuration = 0.1
+hs.window.animationDuration = 0.01
 
-local sizes = {2, 3, 3/2}
+local sizes = {2, 3/2, 3}
 local fullScreenSizes = {1, 4/3, 2}
 
 local GRID = {w = 24, h = 24}
