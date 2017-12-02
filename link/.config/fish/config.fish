@@ -12,7 +12,6 @@ alias dir='ls -hl'
 alias du="du -h"
 alias df="df -h"
 alias fs="stat -f '%z bytes'"
-alias inkognito="set -l FISH_HISTFILE \"\";echo \"-- incognito session started\""
 
 # Copy / Move Files via Rsync
 abbr -a rcp 'rsync -av --progress -h'
@@ -23,6 +22,13 @@ abbr -a rmv 'rsync -av --progress -h --remove-source-files'
 set -gx MANPAGER "less -X"
 # Always enable colored `grep` output
 set -gx GREP_OPTIONS '--color=auto'
+
+function inkognito
+  set -gx fish_history ""
+  set_color bryellow --background=brblack
+  echo "--- inkognito-session started ---"
+  set_color normal
+end
 
 ## -- 50_network
 alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -39,3 +45,4 @@ for file in $HOME/.config/fish/conf.local.d/*.fish
   source $file
 end
 
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
