@@ -1,12 +1,16 @@
 hs.window.animationDuration = 0.01
 
-local sizes = {2, 3/2, 3}
-local fullScreenSizes = {1, 4/3, 2}
+-- multi monitor
+hs.hotkey.bind(hyper, ']', hs.grid.pushWindowNextScreen)
+hs.hotkey.bind(hyper, '[', hs.grid.pushWindowPrevScreen)
 
-local GRID = {w = 24, h = 24}
+local sizes = {3/2, 2, 3}
+local fullScreenSizes = {1, 4/3}
+
+local GRID = {w = 24, h = 24, margin = 5}
 hs.grid.setGrid(GRID.w .. 'x' .. GRID.h)
-hs.grid.MARGINX = 0
-hs.grid.MARGINY = 0
+hs.grid.MARGINX = GRID.margin
+hs.grid.MARGINY = GRID.margin
 
 local pressed = {
   up = false,
@@ -70,7 +74,11 @@ function nextFullScreenStep()
     cell.x = (GRID.w - GRID.w / nextSize) / 2
     cell.y = (GRID.h - GRID.h / nextSize) / 2
 
+    hs.grid.MARGINX = 0
+    hs.grid.MARGINY = 0
     hs.grid.set(win, cell, screen)
+    hs.grid.MARGINX = GRID.margin
+    hs.grid.MARGINY = GRID.margin
   end
 end
 

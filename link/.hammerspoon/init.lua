@@ -21,6 +21,8 @@ local bindings = {
     ['Sequel Pro']         = 'l',
     ['Remember The Milk']  = 'r',
     ['Tyme2']              = 'y',
+    ['Tower']              = 'o',
+    ['Spotify']            = 'm',
   }
 }
 for modifiers, apps in pairs(bindings) do
