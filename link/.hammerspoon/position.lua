@@ -160,6 +160,13 @@ hs.hotkey.bind(hyper, "return", function ()
   nextFullScreenStep()
 end)
 
+hs.hotkey.bind(hyper, "\\", function ()
+  if hs.window.focusedWindow() then
+    local win = hs.window.frontmostWindow()
+    win:centerOnScreen()
+  end
+end)
+
 hs.hotkey.bind(hyper, "i", function ()
   local win = hs.window.frontmostWindow()
   local id = win:id()
