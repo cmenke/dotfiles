@@ -1,0 +1,27 @@
+{
+  "title": "MX Master 2S",
+  "rules": [
+    {
+      "description": "Thumb Button (button6) → Mission Control",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "mandatory": [
+                "left_option",
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "mission_control"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
