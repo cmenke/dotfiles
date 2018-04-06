@@ -5,7 +5,7 @@ upgrade
 install coreutils
 install findutils
 install libarchive
-install spatialite-tools
+# install spatialite-tools
 install readline
 install rsync
 
@@ -23,19 +23,20 @@ install httpie
 install jq
 install rename
 install tree
-
-# Taps
-tap homebrew/dupes
+install pwgen
 
 # Install more recent versions of some OS X tools
 install vim --with-override-system-vi
-install homebrew/dupes/grep
+install grep
 
 # Dev
 install go
 install saltstack
-install ansible
-install packer
 install terraform
+# install ansible
+# install packer
+
+# Other
+install youtube-dl
 
 cleanup

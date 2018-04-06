@@ -15,43 +15,38 @@ function installcask() {
 }
 
 # Quicklook Plugins - see https://github.com/sindresorhus/quick-look-plugins
-installcask betterzipql
+# installcask betterzipql
 installcask qlcolorcode
 installcask qlprettypatch
 installcask quicklook-csv
 installcask quicklook-json
 
 # Misc
-installcask adobe-photoshop-cc
-installcask adobe-photoshop-lightroom
-installcask google-chrome-beta
-installcask google-drive
+# installcask adobe-photoshop-cc
+# installcask adobe-photoshop-lightroom
+installcask google-drive-file-stream
 installcask little-snitch
-installcask skype
 installcask spillo
-installcask teamviewer
 installcask transmission
 installcask vlc
-installcask vox
-installcask vox-preferences-pane
+# installcask vox
+# installcask vox-preferences-pane
 
 # Development
-installcask dash
+# installcask dash
 installcask iterm2
-installcask kaleidoscope
-installcask paw
-installcask phpstorm
-installcask sequel-pro
+# installcask kaleidoscope
+# installcask paw
+# installcask phpstorm
+# installcask sequel-pro
 installcask sublime-text
 installcask tower
 installcask transmit
 installcask vagrant
-installcask veertu-desktop
 installcask visual-studio-code
 
 # Utilities
 installcask alfred
-installcask f-lux
 installcask hammerspoon
 installcask imageoptim
 installcask keepingyouawake
