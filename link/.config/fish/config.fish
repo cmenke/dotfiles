@@ -31,11 +31,16 @@ function inkognito
 end
 
 ## -- 50_network
-alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+function localips
+  ifconfig | grep "broadcast" | awk '{print $2}'
+end
+function wanip
+  dig +short myip.opendns.com @resolver1.opendns.com
+end
 
 # Whois
 alias whois="whois -h whois-servers.net"
+
 # Sniff HTTP Traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 # View HTTP traffic
