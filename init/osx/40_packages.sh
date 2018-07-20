@@ -3,13 +3,14 @@
 
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
-  e_header "Installing Homebrew"
+  echo "Installing Homebrew"
   true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 if [[ "$(type -P brew)" ]]; then
-  e_header "Updating Homebrew"
+  echo "Updating Homebrew"
 
   # Parse Brewfile
-  brew bundle ~/.dotfiles/conf/osx/Brewfile
+  brew bundle --file="$HOME/.dotfiles/conf/osx/Brewfile"
+  brew cask cleanup
 fi

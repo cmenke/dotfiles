@@ -1,42 +1,103 @@
-doctor
-update
-upgrade
+brew "coreutils"
+brew "findutils"
+brew "libarchive"
+# brew "spatialite-tools"
+brew "readline"
+brew "rsync"
+brew "mas"
+brew "mackup"
 
-install coreutils
-install findutils
-install libarchive
-# install spatialite-tools
-install readline
-install rsync
+brew "fish"
+brew "ssh-copy-id"
+brew "wget", args: ["enable-iri"]
 
-install fish
-install ssh-copy-id
-install wget --enable-iri
-
-install git
-install git-extras
+brew "git"
+brew "git-extras"
 
 # Utilities
-install ack
-install htop-osx
-install httpie
-install jq
-install rename
-install tree
-install pwgen
+brew "ack"
+brew "htop-osx"
+brew "httpie"
+brew "jq"
+brew "rename"
+brew "tree"
+brew "pwgen"
 
 # Install more recent versions of some OS X tools
-install vim --with-override-system-vi
-install grep
+brew "vim", args: ["with-override-system-vi"]
+brew "grep"
 
 # Dev
-install go
-install saltstack
-install terraform
-# install ansible
-# install packer
+brew "go"
+brew "saltstack"
+brew "terraform"
+# brew "ansible"
+# brew "packer"
 
 # Other
-install youtube-dl
+brew "jrnl"
+brew "youtube-dl"
 
-cleanup
+
+# Casks
+# -------------
+cask_args appdir: '/Applications'
+tap "homebrew/cask-versions"
+
+# Quicklook Plugins - see https://github.com/sindresorhus/quick-look-plugins
+cask "qlcolorcode"
+cask "qlimagesize"
+cask "qlmarkdown"
+cask "qlprettypatch"
+cask "qlstephen"
+cask "qlvideo"
+cask "quicklook-csv"
+cask "quicklook-json"
+cask "webpquicklook"
+
+# Customization
+cask "hammerspoon"
+cask "karabiner-elements"
+cask "scroll-reverser"
+
+# Base Applications
+cask "alfred"
+cask "google-drive-file-stream"
+cask "imageoptim"
+cask "iterm2-beta"
+cask "keepingyouawake"
+cask "little-snitch"
+
+# Misc
+cask "spotify"
+cask "teamviewer"
+cask "transmission"
+cask "vlc"
+
+# Development
+cask "dash"
+cask "kaleidoscope"
+cask "paw"
+cask "phpstorm"
+cask "querious"
+cask "sublime-text"
+cask "tower"
+cask "transmit"
+cask "vagrant"
+cask "virtualbox"
+cask "visual-studio-code"
+
+# MAS-cli
+# -------------
+mas "App Cleaner & Uninstaller", id:1013897218
+mas "Easy CSV Editor", id:1171346381
+mas "Enpass password manager", id:732710998
+mas "Quiver", id:866773894
+mas "Reeder 3", id:880001334
+mas "Spillo", id:873245660
+mas "The Unarchiver", id:425424353
+mas "Tweetbot 3 for Twitter", id:1384080005
+mas "Tyme 2", id:1063996724
+
+mas "Affinity Photo", id:824183456
+mas "Affinity Designer", id:824171161

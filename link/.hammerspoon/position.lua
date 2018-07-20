@@ -7,7 +7,7 @@ hs.hotkey.bind(hyper, '[', hs.grid.pushWindowPrevScreen)
 local sizes = {3/2, 2, 3}
 local fullScreenSizes = {1, 4/3}
 
-local GRID = {w = 24, h = 24, margin = 5}
+local GRID = {w = 24, h = 24, margin = 4}
 hs.grid.setGrid(GRID.w .. 'x' .. GRID.h)
 hs.grid.MARGINX = GRID.margin
 hs.grid.MARGINY = GRID.margin

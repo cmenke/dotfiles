@@ -30,14 +30,14 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/nul
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm /Private/var/vm/sleepimage
+# sudo rm /Private/var/vm/sleepimage
 # Create a zero-byte file instead…
-sudo touch /Private/var/vm/sleepimage
+# sudo touch /Private/var/vm/sleepimage
 # …and make sure it can’t be rewritten
-sudo chflags uchg /Private/var/vm/sleepimage
+# sudo chflags uchg /Private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
 #sudo pmset -a sms 0
@@ -48,7 +48,7 @@ sudo chflags uchg /Private/var/vm/sleepimage
 ###############################################################################
 
 # Enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 
 ###############################################################################
@@ -56,28 +56,28 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 
 # Only run after first installation
-if [ $IS_FRESH ]; then
-	# Disable Spotlight indexing for any volume that gets mounted and has not yet
-	# been indexed before.
-	# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-	#sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# if [ $IS_FRESH ]; then
+# 	# Disable Spotlight indexing for any volume that gets mounted and has not yet
+# 	# been indexed before.
+# 	# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+# 	#sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
-	# Load new settings before rebuilding the index
-	killall mds > /dev/null 2>&1
+# 	# Load new settings before rebuilding the index
+# 	killall mds > /dev/null 2>&1
 
-	# Make sure indexing is enabled for the main volume
-	sudo mdutil -i on / > /dev/null
+# 	# Make sure indexing is enabled for the main volume
+# 	sudo mdutil -i on / > /dev/null
 
-	# Rebuild the index from scratch
-	sudo mdutil -E / > /dev/null
-fi
+# 	# Rebuild the index from scratch
+# 	sudo mdutil -E / > /dev/null
+# fi
 
 
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
 
-if [ $IS_FRESH ]; then
-	# Disable local Time Machine backups
-	hash tmutil &> /dev/null && sudo tmutil disablelocal
-fi
+# if [ $IS_FRESH ]; then
+# 	# Disable local Time Machine backups
+# 	hash tmutil &> /dev/null && sudo tmutil disablelocal
+# fi
