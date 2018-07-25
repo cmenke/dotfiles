@@ -46,8 +46,10 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 # View HTTP traffic
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-for file in $HOME/.config/fish/conf.local.d/*.fish
+for file in $HOME/.config/fish/conf.d/*.fish
   source $file
 end
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+for file in $HOME/.config/fish/conf.local.d/*.fish
+  source $file
+end
