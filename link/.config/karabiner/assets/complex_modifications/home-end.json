@@ -35,7 +35,7 @@
             "key_code": "home",
             "modifiers": {
               "mandatory": [
-                "left_shift"
+                "right_shift"
               ]
             }
           },
@@ -91,7 +91,7 @@
             "key_code": "end",
             "modifiers": {
               "mandatory": [
-                "left_shift"
+                "right_shift"
               ]
             }
           },
