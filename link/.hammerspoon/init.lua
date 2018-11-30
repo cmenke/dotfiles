@@ -15,6 +15,7 @@ local bindings = {
     ['Calendar']           = 'c',
     ['Google Chrome']      = 'return',
     ['Sublime Text']       = 's',
+    ['Sublime Merge']      = 'g',
     ['Quiver']             = 'q',
     ['PhpStorm']           = 'p',
     ['Visual Studio Code'] = 'v',
@@ -23,6 +24,7 @@ local bindings = {
     ['Tyme2']              = 'y',
     ['Tower']              = 'o',
     ['Spotify']            = 'm',
+    ['Telegram']           = '=',
   }
 }
 for modifiers, apps in pairs(bindings) do

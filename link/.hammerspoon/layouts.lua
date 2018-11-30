@@ -37,7 +37,18 @@ webdev_uw = {
     {"Sublime Text",      nil, display_ext_uw_1, hs.geometry.unitrect(5/6, 0, 1/6, 1), nil, nil},
 }
 
+priv_uw = {
+    -- 2/6 - left
+    {"Spotify",           nil, display_ext_uw_1, hs.geometry.unitrect(0, 1/3, 1/3, 2/3), nil, nil},
+    -- 3/6 - main
+    {"Google Chrome",     nil, display_ext_uw_1, hs.geometry.unitrect(1/3, 0, 4/9, 1), nil, nil},
+    -- 1/6 - right
+    {"Tweetbot",          nil, display_ext_uw_1, hs.geometry.unitrect(7/9, 0, 1/9, 1), nil, nil},
+    {"Telegram",          nil, display_ext_uw_1, hs.geometry.unitrect(8/9, 0, 1/9, 1), nil, nil},
+}
+
 hs.hotkey.bind(hypershift, '1', function() hs.layout.apply(webdev_uw) end)
+hs.hotkey.bind(hypershift, '2', function() hs.layout.apply(priv_uw) end)
 
 -- local chrome = hs.application.applicationsForBundleID('com.google.Chrome')[1]
 -- if chrome ~= nil then
