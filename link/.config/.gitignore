@@ -1,7 +1,9 @@
 configstore
 gcloud
 git/gitk
+gocode
 htop
+wireshark
 yarn
 
 fish/fish_history

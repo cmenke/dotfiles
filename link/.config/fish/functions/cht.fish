@@ -1,4 +1,3 @@
 function cht
-    #echo -ne "\033]0;$argv\007"
-    set -g title $argv
+    curl cht.sh/$argv
 end
