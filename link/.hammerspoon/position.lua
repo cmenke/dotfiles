@@ -4,7 +4,7 @@ hs.window.animationDuration = 0.01
 hs.hotkey.bind(hyper, ']', hs.grid.pushWindowNextScreen)
 hs.hotkey.bind(hyper, '[', hs.grid.pushWindowPrevScreen)
 
-local sizes = {3/2, 2, 3}
+local sizes = {3/2, 2, 3, 6}
 local fullScreenSizes = {1, 4/3}
 
 local GRID = {w = 24, h = 24, margin = 4}
